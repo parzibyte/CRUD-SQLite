@@ -18,10 +18,6 @@
         </activity>
         <activity android:name=".EditarMascotaActivity" />
         <activity android:name=".AgregarMascotaActivity" />
-        <activity
-            android:name=".BorrarPls"
-            android:label="@string/title_activity_borrar_pls"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

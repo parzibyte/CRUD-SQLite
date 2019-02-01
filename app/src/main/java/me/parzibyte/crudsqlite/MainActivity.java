@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         fabAgregarMascota = findViewById(R.id.fabAgregarMascota);
 
 
-        // Por defecto es una lista vacía
+        // Por defecto es una lista vacía,
+        // se la ponemos al adaptador y configuramos el recyclerView
         listaDeMascotas = new ArrayList<>();
         adaptadorMascotas = new AdaptadorMascotas(listaDeMascotas);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Listener de los clicks en la lista, o sea el RecyclerView
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
+            @Override // Un toque sencillo
             public void onClick(View view, int position) {
                 // Pasar a la actividad EditarMascotaActivity.java
                 Mascota mascotaSeleccionada = listaDeMascotas.get(position);
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
-            @Override
+            @Override // Un toque largo
             public void onLongClick(View view, int position) {
                 final Mascota mascotaParaEliminar = listaDeMascotas.get(position);
                 AlertDialog dialog = new AlertDialog
@@ -103,16 +104,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Créditos
         fabAgregarMascota.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Acerca de")
-                        .setMessage("CRUD de Android con SQLite creado por parzibyte [parzibyte.me]")
+                        .setMessage("CRUD de Android con SQLite creado por parzibyte [parzibyte.me]\n\nIcons made by Freepik from www.flaticon.com ")
                         .setNegativeButton("Cerrar", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                            public void onClick(DialogInterface dialogo, int which) {
+                                dialogo.dismiss();
                             }
                         })
                         .setPositiveButton("Sitio web", new DialogInterface.OnClickListener() {
